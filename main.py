@@ -12,7 +12,7 @@ def read_matrix():
 
 def draw_iconic_digraph(matrix):
     G = nx.DiGraph(matrix, name="Iconic digraph")
-    pos = nx.random_layout(G)
+    pos = nx.circular_layout(G)
     nx.draw_networkx_edges(G, pos)
     nx.draw_networkx_nodes(G, pos)
     nx.draw_networkx_labels(G, pos)
@@ -75,6 +75,7 @@ def check_balance(matrix):
 
 def main():
     matrix = np.matrix(read_matrix())
+
     draw_iconic_digraph(matrix)
     [W, DD, WN] = check_balance(matrix)
     list_wn = list(np.array(np.transpose(WN)).reshape(-1, ))
